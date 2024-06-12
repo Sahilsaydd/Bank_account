@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Bank Account</title>
+
+    <style>
+       #edit_bank{
+           float: left;
+        }
+        #edit_bank h1{
+            text-wrap: nowrap;
+            text-align: center;
+        }
+    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div
+      id="edit_bank"
+      class="w-50 m-3 pr-5 pt-2 border border-primary shadow p-3 mb-5 bg-body-tertiary rounded"
+    >
+      <h1 class="fs-2 text-primary"><b>Edit Bank Account</b></h1>
+      <hr>
+      <form action="/edit_bank_details" method="post">
+        <input type="hidden" name="user_id" value="<%= bank_accounts.user_id %>" />
+
+        <label for="exampleFormControlInput1" class="form-label">Name:</label>
+        <input type="text" class="form-control" name="user_name" id="" value="<%= bank_accounts.user_name %>" />
+        <br /><br />
+
+        <label for="exampleFormControlInput1" class="form-label">Mobile:</label>
+        <input type="number" class="form-control" name="user_mobile" id="" value="<%= bank_accounts.user_mobile %>" />
+        <br /><br />
+
+        <label for="exampleFormControlInput1" class="form-label">Email:</label>
+        <input type="email" class="form-control" name="user_email" id="" value="<%= bank_accounts.user_email %>" />
+        <br /><br />
+
+        <label for="exampleFormControlInput1" class="form-label">Address:</label>
+        <textarea class="form-control" name="user_address" id=""><%= bank_accounts.user_address %></textarea>
+        <br /><br />
+
+        <label for="exampleFormControlInput1" class="form-label">Pincode:</label>
+        <input type="number" class="form-control" name="pincode" id="" value="<%= bank_accounts.pincode %>" />
+        <br /><br />
+
+        <label for="exampleFormControlInput1" class="form-label">DOB:</label>
+        <input type="date" class="form-control" name="birth_date" id="" value="<%= bank_accounts.birth_date ? bank_accounts.birth_date.toISOString().slice(0, 10) : '' %>" />
+        <br /><br />
+
+        <label for="exampleFormControlInput1" class="form-label">Adhar NO:</label>
+        <input type="number" class="form-control" name="adhar_card_no" id="" value="<%= bank_accounts.adhar_card_no %>" />
+        <br /><br />
+
+        <label for="exampleFormControlInput1" class="form-label">Pan NO:</label>
+        <input type="text" class="form-control" name="pan_card_no" id="" value="<%= bank_accounts.pan_card_no %>" />
+        <br /><br />
+
+        <label for="exampleFormControlInput1" class="form-label">Select Gender:</label>
+        <input type="radio" class="form-check-input" name="gender" id="male" value="Male" <%= bank_accounts.gender === 'Male' ? 'checked' : '' %> /> &nbsp; Male
+        &nbsp;&nbsp;&nbsp;
+        <input type="radio" class="form-check-input" name="gender" id="female" value="Female" <%= bank_accounts.gender === 'Female' ? 'checked' : '' %> /> &nbsp; Female
+        <br /><br />
+
+        <label for="exampleFormControlInput1" class="form-label">Account Type:</label>
+        <select name="account_type" class="form-select" id="">
+          <option value="Saving" <%= bank_accounts.account_type === 'Saving' ? 'selected' : '' %>>Saving</option>
+          <option value="Current" <%= bank_accounts.account_type === 'Current' ? 'selected' : '' %>>Current</option>
+          <option value="Salary" <%= bank_accounts.account_type === 'Salary' ? 'selected' : '' %>>Salary</option>
+        </select>
+        <br /><br />
+
+        <label for="exampleFormControlInput1" class="form-label">Is Adhar linked with Pan:</label>
+        <input type="checkbox" name="adhar_pan_link" id="" value="Yes" <%= bank_accounts.adhar_pan_link === 'Yes' ? 'checked' : '' %> />
+        <br /><br />
+
+        <button class="btn btn-outline-success">Save</button>
+        <br /><br />
+      </form>
+    </div>
+  </body>
+</html>
